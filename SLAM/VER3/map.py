@@ -25,10 +25,10 @@ class Map:
 
             self.acceleration = 0.0
             self.steering = 0.0
-            self.fov = 175  # 150   #(thijs) this 'field of view' is actually a distancethreshold (in pixels, no less)
+            self.fov = 175  # 150
             self.turning_sharpness = 1.8
             self.breaks = True
-            self.fov_range = 60  #(thijs) this is the actual (camera) field of view variable
+            self.fov_range = 60
             self.auto = False
             self.headlights = False
 
@@ -107,10 +107,8 @@ def get_angle_between(obj_1, obj_2, obj_2_angle):
     a = a_b[0]
     b = a_b[1]
 
-    beta = np.arctan(b / a) * (180 / np.pi) #(thijs) doing arctan(y/x) can result in divide by 0, which arctan2(y, x) solves
+    beta = np.arctan(b / a) * (180 / np.pi)
     alpha = beta + 90 * (b / np.abs(b)) * np.abs((a / np.abs(a)) - 1)
     alpha = alpha[0, 0]
 
     return alpha
-
-#(thijs) get_angle_between can also just be: return(np.arctan2(obj_2.y-obj_1.y, obj_2.x-obj_1.x)-obj_2_angle)
